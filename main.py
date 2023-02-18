@@ -10,7 +10,7 @@ URL_ETH = 'https://rest.coinapi.io/v1/exchangerate/ETH/USD'
 HEADERS = {'X-CoinAPI-Key' : 'A3097FDE-CF29-4D6F-88D3-AD9D9EAF8D86'}
 
 
-async def get_rate():         # Collection of price data every 60 seconds
+async def get_rate():                           # Collection of price data every 60 seconds
     while True:
         response_btc = requests.get(URL_BTC, headers=HEADERS)
         response_eth = requests.get(URL_ETH, headers=HEADERS)
@@ -32,7 +32,7 @@ async def get_rate():         # Collection of price data every 60 seconds
         await asyncio.sleep(60)
 
 
-async def analysis():           # Data analysis every hour
+async def analysis():                           # Data analysis every hour
     while True:
         with open('rate.txt', 'r') as f:
             rate_dict = json.load(f)
@@ -53,10 +53,10 @@ async def analysis():           # Data analysis every hour
                 diff_btc = (b - b_last) / b
                 diff_eth = (e - e_last) / e
                 if abs(diff_eth) <= 0.001:
-                    continue                        # Small change - pass
+                    continue                            # Small change - pass
                 elif diff_btc > 0 and diff_eth < 0 \
                     or diff_btc < 0 and diff_eth > 0:      
-                    own_movement += 1               # 1 - Own movement ETH
+                    own_movement += 1                   # 1 - Own movement ETH
                 elif diff_btc / diff_eth > 3:
                     own_movement += 1
                     

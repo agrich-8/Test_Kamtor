@@ -7,13 +7,14 @@ import requests
 
 URL_BTC = 'https://rest.coinapi.io/v1/exchangerate/BTC/USD'
 URL_ETH = 'https://rest.coinapi.io/v1/exchangerate/ETH/USD'
-HEADERS = {'X-CoinAPI-Key' : 'A3097FDE-CF29-4D6F-88D3-AD9D9EAF8D86'}
+HEADERS_BTC = {'X-CoinAPI-Key' : 'A3097FDE-CF29-4D6F-88D3-AD9D9EAF8D86'}
+HEADERS_ETH = {'X-CoinAPI-Key' : '5B8CDD96-1CE0-41BB-BBBE-0726BA1DBD20'}
 
 
 async def get_rate():                           # Collection of price data every 60 seconds
     while True:
-        response_btc = requests.get(URL_BTC, headers=HEADERS)
-        response_eth = requests.get(URL_ETH, headers=HEADERS)
+        response_btc = requests.get(URL_BTC, headers=HEADERS_BTC)
+        response_eth = requests.get(URL_ETH, headers=HEADERS_ETH)
         rate_btc = response_btc.json()['rate']
         rate_eth = response_eth.json()['rate']
 

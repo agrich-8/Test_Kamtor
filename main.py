@@ -57,7 +57,7 @@ async def analysis():                           # Data analysis every hour
                     continue                            # Small change - pass
                 elif diff_btc > 0 and diff_eth < 0 \
                     or diff_btc < 0 and diff_eth > 0:      
-                    own_movement += 1                   # 1 - Own movement ETH
+                    own_movement += 1                   # +1 own movement ETH
                 elif diff_btc / diff_eth > 3:
                     own_movement += 1
                     
